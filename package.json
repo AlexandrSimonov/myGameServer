@@ -1,0 +1,83 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "start": "rimraf ./dist && babel -d ./dist ./src -s && node dist/main.js",
+    "clean": "rimraf ./dist",
+    "dev": "nodemon dev.js",
+    "lint:js": "eslint ./src",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": "eslint"
+  },
+  "pre-commit": "lint-staged",
+  "eslintConfig": {
+    "root": true,
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ],
+    "extends": [
+      "airbnb-base",
+      "prettier"
+    ],
+    "env": {
+      "node": true
+    },
+    "rules": {
+      "no-plusplus": 0,
+      "no-console": 0,
+      "arrow-body-style": 0,
+      "class-methods-use-this": 0,
+      "no-restricted-syntax": 0,
+      "guard-for-in": 0
+    }
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.1",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-es2016": "^6.22.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-register": "^6.24.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.2",
+    "eslint-config-prettier": "^1.5.0",
+    "eslint-plugin-flowtype": "^2.30.4",
+    "eslint-plugin-import": "^2.2.0",
+    "lint-staged": "^3.4.0",
+    "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-preset-env": "^1.1.11",
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.15.2",
+    "pg": "^6.1.5",
+    "pg-hstore": "^2.3.2",
+    "redis": "^2.7.1",
+    "rimraf": "^2.6.1",
+    "sequelize": "^3.30.4",
+    "socket.io": "^1.7.3"
+  },
+  "babel": {
+    "presets": [
+      "es2016",
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  }
+}
